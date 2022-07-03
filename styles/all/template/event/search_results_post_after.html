@@ -1,0 +1,23 @@
+{% if S_CAN_MOD and searchresults.POST_ID == LAST_RESULT_ID %}
+    <fieldset class="display-actions">
+        <select name="action">
+            <option value="" selected="selected">{{ lang('SELECT_ACTION') }}</option>
+            {#
+            {% if S_CAN_APPROVE %}<option value="approve">{{ lang('APPROVE_POSTS') }}</option>{% endif %}
+            {% if S_CAN_LOCK %}<option value="lock_post">{L_LOCK_POST_POSTS} [ {{ lang('LOCK_POST_EXPLAIN') }} ]</option><option value="unlock_post">{{ lang('UNLOCK_POST_POSTS') }}</option>{% endif %}
+            #}
+            {% if S_CAN_DELETE %}<option value="mws_delete">{{ lang('DELETE_POSTS') }}</option>{% endif %}
+            {#
+            {% if S_CAN_RESTORE %}<option value="restore">{{ lang('RESTORE_POSTS') }}</option>{% endif %}
+            {% if S_CAN_MERGE %}<option value="merge_posts"{% if S_MERGE_VIEW %} selected="selected"{% endif %}>{{ lang('MERGE_POSTS') }}</option>{% endif %}
+            {% if S_CAN_SPLIT %}<option value="split_all"{% if S_SPLIT_VIEW %} selected="selected"{% endif %}>{{ lang('SPLIT_POSTS') }}</option><option value="split_beyond">{{ lang('SPLIT_AFTER') }}</option>{% endif %}
+            {% if S_CAN_SYNC %}<option value="resync">{{ lang('RESYNC') }}</option>{% endif %}
+            #}
+        </select>&nbsp;
+        <input class="button1 button button-form" type="submit" name="mws_submit" value="{{ lang('SUBMIT') }}" />
+        <div><a href="#" onclick="marklist('mcp', 'post', true); return false;">{{ lang('MARK_ALL') }}</a> :: <a href="#" onclick="marklist('mcp', 'post', false); return false;">{{ lang('UNMARK_ALL') }}</a></div>
+    {{ S_HIDDEN_FIELDS }}
+    {{ S_FORM_TOKEN }}
+    </fieldset>
+</form>
+{% endif %}

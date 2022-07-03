@@ -1,0 +1,14 @@
+{% if S_CAN_MOD %}
+<ul class="post-buttons">
+    <li>
+        <a href="{{ searchresults.U_POST_DETAILS }}" title="{{ lang('POST_DETAILS') }}" class="button button-icon-only">
+            <i class="icon fa-info fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('POST_DETAILS') }}</span>
+        </a>
+    </li>
+    <li>
+        <label for="post_id_list_select_{{ searchresults.TOPIC_ID }}">{{ lang('SELECT') }}{{ lang('COLON') }}
+            <input type="checkbox" id="post_id_list_select_{{ searchresults.TOPIC_ID }}" name="post_id_list[]" value="{{ searchresults.TOPIC_ID }}"{% if searchresults.S_CHECKED %} checked="checked"{% endif %} />
+        </label>
+    </li>
+</ul>
+{% endif %}

@@ -1,0 +1,14 @@
+services:
+    toxyy.moderatewhilesearching.listener:
+        class: toxyy\moderatewhilesearching\event\listener
+        arguments:
+            - '@auth'
+            - '@cache.driver'
+            - '@language'
+            - '@template'
+            - '@user'
+            - '@request'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }
