@@ -6,6 +6,17 @@
 
 phpBB 3.3+ & PHP 7.4+
 
+**This extension requires a core edit:**
+
+Open ./forum/phpbb/search/fulltext_mysql.php
+
+Find `$this->db->sql_escape(html_entity_decode($this->search_query, ENT_COMPAT)`
+Replace with `$this->db->sql_escape(html_entity_decode($search_query, ENT_COMPAT)`
+
+(We are changing `$this->search_query` to `$search_query`)
+
+A pull request will be made for this change by 3.3.9
+
 [![Build Status](https://github.com/toxyy/moderatewhilesearching/workflows/Tests/badge.svg)](https://github.com/toxyy/moderatewhilesearching/actions)
 ## Features
 
