@@ -20,7 +20,16 @@ class v_0_1_0 extends \phpbb\db\migration\migration
 		return [
 			// Add configs
 			['config.add', ['mws_ext_version', '0.010']],
+			['custom', [[$this, 'mws_topic_key']]],
 		];
+	}
+
+	public function mws_topic_key()
+	{
+		// Add key for InnoDB compatibility
+		$sql = 'ALTER TABLE ' . TOPICS_TABLE . "
+			ADD FULLTEXT(topic_duplicate_ext)";
+		$this->sql_query($sql);
 	}
 
 	public function update_schema()
