@@ -58,8 +58,10 @@ class listener implements EventSubscriberInterface
 	{
 		return [
 			'core.user_setup'									=> 'core_user_setup',
-			'core.search_mysql_by_keyword_modify_search_key'	=> 'search_mysql_by_keyword_modify_search_key',
-			'core.search_mysql_keywords_main_query_before'		=> 'search_mysql_keywords_main_query_before',
+			'core.search_native_by_keyword_modify_search_key'	=> 'search_by_keyword_modify_search_key',
+			'core.search_mysql_by_keyword_modify_search_key'	=> 'search_by_keyword_modify_search_key',
+			'core.search_native_keywords_count_query_before'	=> 'search_keywords_main_query_before',
+			'core.search_mysql_keywords_main_query_before'		=> 'search_keywords_main_query_before',
 			'core.search_modify_url_parameters'					=> 'search_modify_url_parameters',
 			'core.search_modify_rowset'							=> 'search_modify_rowset',
 			'core.search_modify_tpl_ary'						=> 'search_modify_tpl_ary'
@@ -76,7 +78,7 @@ class listener implements EventSubscriberInterface
 		$event['lang_set_ext'] = $lang_set_ext;
 	}
 
-	public function search_mysql_by_keyword_modify_search_key($event)
+	public function search_by_keyword_modify_search_key($event)
 	{
 		// force sort key to be by topic title
 		if($this->request->variable('duplicatetopics', 0))
@@ -87,7 +89,6 @@ class listener implements EventSubscriberInterface
 		}
 	}
 
-	public function search_mysql_keywords_main_query_before($event)
 	{
 		// add some bits to make the query find duplicates
 		if($this->request->variable('duplicatetopics', 0))
