@@ -89,6 +89,7 @@ class listener implements EventSubscriberInterface
 		}
 	}
 
+	public function search_keywords_main_query_before($event)
 	{
 		// add some bits to make the query find duplicates
 		if($this->request->variable('duplicatetopics', 0))
